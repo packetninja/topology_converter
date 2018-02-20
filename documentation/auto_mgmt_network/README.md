@@ -7,7 +7,7 @@
 * [Sample Output](#sample-output)
 
 
-The '-c' option can be used and TC will automatically build a management network for your topology complete with an Out of Band Managment Server (oob-mgmt-server) an Out of Band management switch (oob-mgmt-switch) and every other device's eth0 port connected to a single bridge on the oob-mgmt-switch device. Port swp1 on the oob-mgmt-switch will always connect to the oob-mgmt-server.
+The `-c` option can be used and TC will automatically build a management network for your topology complete with an Out of Band Managment Server (oob-mgmt-server) an Out of Band management switch (oob-mgmt-switch) and every other device's eth0 port connected to a single bridge on the oob-mgmt-switch device. Port swp1 on the oob-mgmt-switch will always connect to the oob-mgmt-server.
 
 
 ![Automatically Built Devices and Links](./automated_mgmt_network.png)
