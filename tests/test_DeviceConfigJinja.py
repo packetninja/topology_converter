@@ -46,7 +46,7 @@ class TestDeviceConfigJinja(object):  # pylint: disable=W0612,R0903
         expected_output.append("")
         expected_output.append("    # Run the Config specified in the Node Attributes")
         expected_output.append("    device.vm.provision :shell , privileged: false, :inline => 'echo \"$(whoami)\" > /tmp/normal_user'")  # pylint: disable=C0301
-        expected_output.append("    device.vm.provision :shell , path: \"./helper_scripts/auto_mgmt_network/OOB_Server_Config_auto_mgmt.sh\"") # pylint: disable=C0301
+        expected_output.append("    device.vm.provision :shell , path: \"./helper_scripts/auto_mgmt_network/oob_server_config_auto_mgmt.sh\"") # pylint: disable=C0301
 
         print repr(result)
         print ""

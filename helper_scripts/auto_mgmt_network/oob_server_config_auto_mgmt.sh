@@ -12,7 +12,7 @@ echo " Detected vagrant user is: $username"
 
 
 #######################
-#       KNOBS 
+#       KNOBS
 #######################
 
 REPOSITORY="https://github.com/CumulusNetworks/"

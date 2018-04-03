@@ -132,7 +132,7 @@ class Test_NetworkNode(object): # pylint: disable=R0904
 
         assert node.vm_os == "yk0/ubuntu-xenial"
         assert node.memory == "512"
-        assert node.config == "./helper_scripts/auto_mgmt_network/OOB_Server_Config_auto_mgmt.sh"
+        assert node.config == "./helper_scripts/auto_mgmt_network/oob_server_config_auto_mgmt.sh"
 
 
     def test_oob_switch_function_defaults(self):  # pylint: disable=R0201

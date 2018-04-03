@@ -81,7 +81,7 @@ class NetworkNode(object):
             "oob-server": {
                 "os": "yk0/ubuntu-xenial",
                 "memory": "512",
-                "config": "./helper_scripts/auto_mgmt_network/OOB_Server_Config_auto_mgmt.sh"
+                "config": "./helper_scripts/auto_mgmt_network/oob_server_config_auto_mgmt.sh"
             },
             "oob-switch": {
                 "os": "CumulusCommunity/cumulus-vx",
@@ -1500,7 +1500,7 @@ def render_oob_server_sh(inventory, topology_file, input_dir):
     """Generate the contents of the oob server config.sh
     file based on a jinja2 template
     """
-    oob_config = os.path.join(input_dir, "OOB_Server_Config_auto_mgmt.sh.j2")
+    oob_config = os.path.join(input_dir, "oob_server_config_auto_mgmt.sh.j2")
 
     # the variables that will be passed to the template
     jinja_variables = {"version": VERSION, "topology": topology_file}
@@ -1511,7 +1511,7 @@ def render_oob_server_sh(inventory, topology_file, input_dir):
     # but check just in case
     if oob_server is None:
         print_error("Something went wrong, no OOB Server exists. Failed to build"
-                    + "OOB_Server_config_auto_mgmt.sh")
+                    + "oob_server_config_auto_mgmt.sh")
 
     jinja_variables["oob_server_ip"] = str(oob_server.mgmt_ip).split("/")[0]
     jinja_variables["oob_cidr"] = str(oob_server.mgmt_ip)
@@ -1800,7 +1800,7 @@ def main():  # pylint: disable=R0915
                    render_hosts_file(inventory, cli_args.topology_file,
                                      "./templates/auto_mgmt_network/"))
 
-        write_file("./helper_scripts/auto_mgmt_network/OOB_Server_Config_auto_mgmt.sh",
+        write_file("./helper_scripts/auto_mgmt_network/oob_server_config_auto_mgmt.sh",
                    render_oob_server_sh(inventory, cli_args.topology_file,
                                         "./templates/auto_mgmt_network/"))
 

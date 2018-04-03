@@ -119,7 +119,7 @@ Vagrant.configure("2") do |config|
         
     # Run the Config specified in the Node Attributes
     device.vm.provision :shell , privileged: false, :inline => 'echo "$(whoami)" > /tmp/normal_user'
-    device.vm.provision :shell , path: "./helper_scripts/auto_mgmt_network/OOB_Server_Config_auto_mgmt.sh"
+    device.vm.provision :shell , path: "./helper_scripts/auto_mgmt_network/oob_server_config_auto_mgmt.sh"
     
 
     # Install Rules for the interface re-map
