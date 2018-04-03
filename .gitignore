@@ -1,0 +1,13 @@
+*~
+.vagrant*
+dhcp_mac_map
+*.pyc
+cover/
+tc/
+.coverage
+venv/
+.idea/
+./tests/*.pyc
+.vscode/
+.noseids
+*.code-workspace
