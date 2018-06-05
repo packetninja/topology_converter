@@ -865,7 +865,13 @@ def parse_topology(topology_file):
         for device in inventory:
 
             if 'mgmt_ip' in inventory[device]:
-                node_mgmt_ip = ipaddress.ip_address(unicode(inventory[device]['mgmt_ip']))
+                try:
+                    node_mgmt_ip = ipaddress.ip_address(unicode(inventory[device]['mgmt_ip']))
+
+                except:
+                    print(styles.FAIL + styles.BOLD + " ### ERROR: No IP specified in mgmt_ip option for %s" \
+                          % (device) + styles.ENDC)
+                    exit(1)
 
                 # Check that Defined Mgmt_IP is in same Subnet as OOB-SERVER
                 if node_mgmt_ip not in network:
