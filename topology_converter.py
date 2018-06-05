@@ -869,7 +869,7 @@ def parse_topology(topology_file):
                     node_mgmt_ip = ipaddress.ip_address(unicode(inventory[device]['mgmt_ip']))
 
                 except:
-                    print(styles.FAIL + styles.BOLD + " ### ERROR: No IP specified in mgmt_ip option for %s" \
+                    print(styles.FAIL + styles.BOLD + " ### ERROR: Invalid IP specified in mgmt_ip option for %s" \
                           % (device) + styles.ENDC)
                     exit(1)
 
