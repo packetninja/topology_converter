@@ -1232,3 +1232,29 @@ class TestNetworkInterface(object):  # pylint: disable=W0232, R0904
         parser = tc.ParseGraphvizTopology()
         parsed_topology = parser.parse_topology("./tests/dot_files/host_not_defined.dot")
         self.inventory.add_parsed_topology(parsed_topology)
+
+
+    @raises(SystemExit)
+    def test_invalid_mgmt_ip_in_topology_libvirt(self):  # pylint: disable=R0915
+        """Test parsing a Graphviz topology file with an invalid management_ip exits
+        Uses tests/dot_files/no_mgmt_ip.dot as the test file
+        """
+
+        parser = tc.ParseGraphvizTopology()
+        parser.parse_topology("./tests/dot_files/no_mgmt_ip.dot")
+
+        self.inventory.provider = "libvirt"
+
+        self.inventory.add_parsed_topology(parser)
+
+        assert len(self.inventory.node_collection) == 5
+        assert "leaf01" in self.inventory.node_collection
+        assert "leaf02" in self.inventory.node_collection
+        assert "leaf03" in self.inventory.node_collection
+        assert "leaf04" in self.inventory.node_collection
+        assert "spine01" in self.inventory.node_collection
+
+        assert self.inventory.node_collection["leaf01"].function == "leaf"
+        assert self.inventory.node_collection["leaf01"].vm_os == "CumulusCommunity/cumulus-vx"
+        assert self.inventory.node_collection["leaf01"].memory == "768"
+        assert self.inventory.node_collection["leaf01"].os_version == "3.4.3"
