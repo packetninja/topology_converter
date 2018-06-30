@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Test suite for generating the ansible
+"""Test suite for generating the dhcp
 hostfile for the management network
 """
 # pylint: disable=C0103, R0201
@@ -8,11 +8,11 @@ from nose.tools import raises
 import topology_converter as tc
 
 class TestRenderDhcpdHosts(object):  # pylint: disable=W0612,R0903
-    """Test suite building ansible host files
+    """Test suite building dhcp host files
     """
 
     def test_dhcp_hosts_simple_topology(self):
-        """Test generating the ansible.hosts for the simple topology.dot
+        """Test generating the dhcp.hosts for the simple topology.dot
         """
         topology_file = "./tests/dot_files/simple.dot"
         expected_result_file = "./tests/expected_jinja_outputs/simple_dhcp.hosts"
@@ -26,7 +26,7 @@ class TestRenderDhcpdHosts(object):  # pylint: disable=W0612,R0903
         assert result == open(expected_result_file).read()
 
     def test_dhcp_hosts_reference_topology(self): # pylint: disable=R0201
-        """Test generating the ansible.hosts for the reference topology
+        """Test generating the dhcp.hosts for the reference topology
         """
         topology_file = "./tests/dot_files/reference_topology.dot"
         expected_result_file = "./tests/expected_jinja_outputs/reference_topology_dhcpd.hosts"
@@ -85,7 +85,7 @@ class TestRenderDhcpdHosts(object):  # pylint: disable=W0612,R0903
         assert ztp_line in result.splitlines()
 
     def test_create_mgmt_device_set(self):
-        """Test generating with CMD set
+        """Test generating dhcp host file with CMD set
         """
         topology_file = "./tests/dot_files/example_cmd.dot"
         expected_result_file = "./tests/expected_jinja_outputs/example_cmd_dhcpd.hosts"
