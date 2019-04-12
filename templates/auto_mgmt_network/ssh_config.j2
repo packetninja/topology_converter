@@ -1,0 +1,7 @@
+{%- for device in devices -%}
+{%-   if device.function != "oob-server" and device.function != "host" -%}
+Host {{device.hostname}}
+ User cumulus
+
+{%   endif -%}
+{%- endfor -%}
