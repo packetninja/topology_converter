@@ -1,7 +1,7 @@
 {%- for device in devices -%}
-{%-   if device.function != "oob-server" and device.function != "host" -%}
+{%-   if device.ssh_user is defined and device.ssh_user != "" -%}
 Host {{device.hostname}}
- User cumulus
+ User {{device.ssh_user}}
 
 {%   endif -%}
 {%- endfor -%}
